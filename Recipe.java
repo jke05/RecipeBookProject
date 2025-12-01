@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Recipe
 {
     String title;
-    ArrayList<Ingredients> ingrdients = new ArrayList<Ingredients>();
+    ArrayList<Ingredient> ingrdient = new ArrayList<Ingredient>();
 
     /**
      * Constructor for objects of class Recipe
@@ -18,4 +18,9 @@ public class Recipe
     {
         
     }
+    
+    public void searchByIngredient(ArrayList<Ingredient> ingredient){
+        
+    }
+    
 }
