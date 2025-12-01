@@ -2,19 +2,24 @@
 /**
  * Write a description of class Ingredient here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Gilbert)
+ * @version 1.0
  */
 public class Ingredient
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private String name;
+    private double quantity;
+    private Unit unit;
+    
 
     /**
      * Constructor for objects of class Ingredient
      */
-    public Ingredient()
+    
+    public Ingredient(String name,double quantity, Unit unit)
     {
-        
+        this.name = name;
+        this.quantity = quantity;
+        this.unit = unit;
     }
 }
