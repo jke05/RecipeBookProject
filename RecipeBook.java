@@ -13,13 +13,17 @@ public class RecipeBook
     String author;
     String editor;
     String creationDate;
+    
 
     public RecipeBook(){
         
     }
     
     public void printDetails(String title, String author, String editor, String creationDate){
-        
+        System.out.println(title);
+        System.out.println(author);
+        System.out.println(editor);
+        System.out.println(creationDate);
     }
     
     public void listAll(){
@@ -33,5 +37,12 @@ public class RecipeBook
     public void searchByTitle(String title){
         
     }
-
+    
+    public void getTopRated(){
+        
+    }
+    
+    public void addRecipe(){
+        
+    }
 }

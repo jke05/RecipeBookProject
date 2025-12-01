@@ -10,16 +10,37 @@ public class Recipe
 {
     String title;
     ArrayList<Ingredient> ingrdient = new ArrayList<Ingredient>();
+    RecipeType type;
+    ArrayList<Tag> tag = new ArrayList<Tag>();
+    int servings;
+    double rating;
+    String comment;
 
-    /**
-     * Constructor for objects of class Recipe
-     */
-    public Recipe()
-    {
+    public Recipe(){
         
     }
     
     public void searchByIngredient(ArrayList<Ingredient> ingredient){
+        
+    }
+    
+    public void searchByTag(ArrayList<Tag> tag){
+        
+    }
+    
+    public void printRecipe(){
+        
+    }
+    
+    public void addRating(double rating){
+        
+    }
+    
+    public void addComment(String comment){
+        
+    }
+    
+    public void scale(int servings){
         
     }
     
