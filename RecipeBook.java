@@ -1,11 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Write a description of class RecipeBook here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class RecipeBook
 {
     String title;
@@ -15,8 +9,11 @@ public class RecipeBook
     String creationDate;
     
 
-    public RecipeBook(){
-        
+    public RecipeBook(String author, String editor, String creationDate){
+        this.title = title;
+        this.author = author;
+        this.editor = editor;
+        this.creationDate = creationDate;
     }
     
     public void printDetails(String title, String author, String editor, String creationDate){
@@ -26,16 +23,49 @@ public class RecipeBook
         System.out.println(creationDate);
     }
     
+    public String getTitle(){
+        return title;
+    }
+    
+    //@Override (optional idk why)
+    public String toString(){
+        return this.title + " " + this.author + " " + this.editor + " " +  this.creationDate;
+    }
+
+    public void printString(){
+        System.out.println(this);
+    }
+    
     public void listAll(){
-        
+        for (Recipe r : recipe){
+            System.out.println(getTitle());
+        }
     }
     
     public void listByType(){
+        for (Recipe r : recipe){
+            if (r instanceof MainDishRecipe){
+                printString();
+            }
+        }
         
-    }
+        for (Recipe r : recipe){
+            if (r instanceof DrinkRecipe){
+                printString();
+            }
+        }
+        
+        for (Recipe r : recipe){
+            if (r instanceof DessertRecipe){
+                printString();
+            }
+            }
+        }
     
     public void searchByTitle(String title){
-        
+        if (title.equals(title in recipeclass){
+            printString();
+        }
     }
     
     public void getTopRated(){

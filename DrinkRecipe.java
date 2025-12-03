@@ -12,17 +12,7 @@ public class DrinkRecipe extends Recipe
     /**
      * Constructor for objects of class DrinkRecipe
      */
-    public DrinkRecipe()
-    {
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
+    public DrinkRecipe(){
+        
     }
 }
