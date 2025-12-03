@@ -7,12 +7,8 @@
  */
 public class MainDishRecipe extends Recipe
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private boolean containsProtein = true;
 
-    /**
-     * Constructor for objects of class MainDishRecipe
-     */
     public MainDishRecipe(){
         
     }

@@ -7,11 +7,8 @@
  */
 public class DrinkRecipe extends Recipe
 {
-    private boolean containsSugar = true;
+    private boolean containsAlcohol = true;
 
-    /**
-     * Constructor for objects of class DrinkRecipe
-     */
     public DrinkRecipe(){
         
     }

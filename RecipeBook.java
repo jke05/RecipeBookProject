@@ -63,16 +63,20 @@ public class RecipeBook
         }
     
     public void searchByTitle(String title){
-        if (title.equals(title in recipeclass){
+        for(Recipe r : recipe){
+        if (getTitle().equalsIgnoreCase(title)){
             printString();
+        }else{
+            System.out.print("No recipe found");
         }
-    }
+        }
+    }   
     
     public void getTopRated(){
         
     }
     
-    public void addRecipe(){
-        
+    public void addRecipe(Recipe newRecipe){
+        recipe.add(newRecipe);
     }
 }

@@ -8,12 +8,14 @@
 public class DessertRecipe extends Recipe
 {
     // instance variables - replace the example below with your own
-    private int x;
+    String newTitle;
+    int newServings;
+    private boolean containsSugar = true;
 
-    /**
-     * Constructor for objects of class DessertRecipe
-     */
-    public DessertRecipe(){
-        
+    public DessertRecipe(String newTitle, int newServings, boolean hasSugar)
+    {
+        this.newTitle = newTitle;
+        this.newServings = newServings;
+        this.containsSugar = containsSugar;
     }
 }
