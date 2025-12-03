@@ -11,7 +11,6 @@ public class DessertRecipe extends Recipe
     String newTitle;
     int newServings;
     private boolean containsSugar = true;
-
     public DessertRecipe(String newTitle, int newServings, boolean hasSugar)
     {
         this.newTitle = newTitle;
