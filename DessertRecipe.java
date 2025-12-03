@@ -8,15 +8,18 @@
 public class DessertRecipe extends Recipe
 {
     // instance variables - replace the example below with your own
-    private int x;
+    String newTitle;
+    int newServings;
+    private boolean containsSugar = true;
 
     /**
      * Constructor for objects of class DessertRecipe
      */
-    public DessertRecipe()
+    public DessertRecipe(String newTitle, int newServings, boolean hasSugar)
     {
-        // initialise instance variables
-        x = 0;
+        this.newTitle = newTitle;
+        this.newServings = newServings;
+        this.containsSugar = containsSugar;
     }
 
     /**
@@ -25,9 +28,4 @@ public class DessertRecipe extends Recipe
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }

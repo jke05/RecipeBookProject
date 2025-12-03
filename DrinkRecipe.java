@@ -7,7 +7,7 @@
  */
 public class DrinkRecipe extends Recipe
 {
-    private boolean containsSugar = true;
+    private boolean containsAlcohol = true;
 
     /**
      * Constructor for objects of class DrinkRecipe
@@ -22,7 +22,5 @@ public class DrinkRecipe extends Recipe
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
-    {
-    }
+    
 }

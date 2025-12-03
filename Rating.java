@@ -1,21 +1,26 @@
 
 /**
- * Write a description of class MainDishRecipe here.
+ * Write a description of class Rating here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MainDishRecipe extends Recipe
+public class Rating
 {
     // instance variables - replace the example below with your own
-    private boolean containsProtein = true;
+    private int score;
+    private String comment;
+    private String user;
 
     /**
-     * Constructor for objects of class MainDishRecipe
+     * Constructor for objects of class Rating
      */
-    public MainDishRecipe()
+    public Rating(int score, String comment, String user)
     {
         // initialise instance variables
+        this.score = score;
+        this.comment = comment;
+        this.user = user;
     }
 
     /**

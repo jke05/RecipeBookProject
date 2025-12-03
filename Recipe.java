@@ -9,12 +9,11 @@ import java.util.ArrayList;
 public class Recipe
 {
     String title;
-    ArrayList<Ingredient> ingrdient = new ArrayList<Ingredient>();
+    ArrayList<Ingredient> ingredient = new ArrayList<Ingredient>();
     RecipeType type;
     ArrayList<Tag> tag = new ArrayList<Tag>();
     int servings;
-    double rating;
-    String comment;
+    ArrayList<Rating> rating = new ArrayList<>();
 
     public Recipe(){
         
