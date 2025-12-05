@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public abstract class Recipe
 {
     private String title;
-    private ArrayList<Ingredient> ingredient = new ArrayList<>();
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ArrayList<Tag> tags = new ArrayList<>();
     private int servings;
     private ArrayList<Rating> rating = new ArrayList<>();
@@ -19,28 +19,36 @@ public abstract class Recipe
         this.servings = servings;
     }
     
-    public void searchByIngredient(ArrayList<Ingredient> ingredient){
-        
-    }
-    
-    public void searchByTag(ArrayList<Tag> tag){
-        
+    public void addIngredient(String ingredient){
+        //ADD ingredient TO ingredients
     }
     
     public void printRecipe(){
-        
+        /*
+         * PRINT title, servings, rating, comment, ingredients, tags
+         */
     }
     
-    public void addRating(double rating){
-        
-    }
-    
-    public void addComment(String comment){
-        
+    public void addRating(/*score, comment*/){
+        /*Create new Rating using score, comment
+         * ADD Rating to ratings
+           */
     }
     
     public void scale(int servings){
+        //IF newServings <= 0
+        //STOP
+        //ELSE 
         
+        /*
+         * SET factor = newServings / servings
+         * 
+         * for EACH ingredient IN ingredients
+         * ingredient.quantity = ingredient.quantity * factor
+         * END FOR LOOP
+         * 
+         * SET servings = newServings
+         */
     }
     
 }
