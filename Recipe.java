@@ -50,7 +50,4 @@ public class Recipe
          * SET servings = newServings
          */
     }
-    
-   
-    
 }
