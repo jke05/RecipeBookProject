@@ -6,17 +6,17 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Recipe
+public abstract class Recipe
 {
-    String title;
-    ArrayList<Ingredient> ingredient = new ArrayList<Ingredient>();
-    RecipeType type;
-    ArrayList<Tag> tag = new ArrayList<Tag>();
-    int servings;
-    ArrayList<Rating> rating = new ArrayList<>();
+    private String title;
+    private ArrayList<Ingredient> ingredient = new ArrayList<>();
+    private ArrayList<Tag> tags = new ArrayList<>();
+    private int servings;
+    private ArrayList<Rating> rating = new ArrayList<>();
 
-    public Recipe(){
-        
+    public Recipe(String title, int servings){
+        this.title = title;
+        this.servings = servings;
     }
     
     public void searchByIngredient(ArrayList<Ingredient> ingredient){
