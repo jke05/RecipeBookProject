@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Recipe
+public class Recipe
 {
     private String title;
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
@@ -19,7 +19,7 @@ public abstract class Recipe
         this.servings = servings;
     }
     
-    public void addIngredient(String ingredient){
+    public void addIngredient(Ingredient ingredient){
         //ADD ingredient TO ingredients
     }
     
@@ -50,5 +50,7 @@ public abstract class Recipe
          * SET servings = newServings
          */
     }
+    
+   
     
 }

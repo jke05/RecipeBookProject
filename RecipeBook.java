@@ -73,7 +73,23 @@ public class RecipeBook
     }   
     
     public void getTopRated(){
-        
+        /*
+         *IF recipe list IS empty
+         *      RETURN null
+         *END IF
+         *
+         *SET bestRecipe = first recipe IN list
+         *
+         *FOR EACH recipe IN recipe list
+         *
+         *IF recipe.getAverageRating() > bestRecipe.getAverageRating()
+         *SET best recipe = recipe
+         *END IF
+         *
+         *END FOR
+         *
+         *return bestRecipe
+         */
     }
     
     public void addRecipe(Recipe newRecipe){
