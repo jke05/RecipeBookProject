@@ -8,13 +8,25 @@
 public class DessertRecipe extends Recipe
 {
     // instance variables - replace the example below with your own
-    String newTitle;
-    int newServings;
     private boolean containsSugar = true;
-    public DessertRecipe(String newTitle, int newServings, boolean hasSugar)
-    {
-        this.newTitle = newTitle;
-        this.newServings = newServings;
-        this.containsSugar = containsSugar;
-    }
+    
+    /*
+     * METHOD DessertRecipe(title, servings, hasSugar)
+     *      CALL Recipe constructor with title and servings
+     *      SET this.hasSugar = hasSugar
+     * END METHOD
+     */
+    
+    /*
+     * OVERRIDE METHOD printRecipe
+     *      PRINT "Dessert Recipe: " + title
+     *      PRINT "Servings: " + servings
+     *      PRINT "Has sugar: " + hasSugar
+     *      PRINT "Average Rating: " + getAverageRating()
+     *      PRINT ingredients list
+     *      PRINT steps or tags if applicable
+     * END METHOD
+     */
+    
+    //END CLASS
 }

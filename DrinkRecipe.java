@@ -7,9 +7,27 @@
  */
 public class DrinkRecipe extends Recipe
 {
-    private boolean containsAlcohol = true;
+    private boolean containsAlcohol;
 
-    public DrinkRecipe(){
+    public void DrinkRecipe(){
+        /*
+         * METHOD DrinkRecipe(title, servings, isAlcoholic)
+         *      CALL Recipe constructor with title and servings
+         *      SET this.isAlcoholic = isAlcoholic
+         * END METHOD
+         */
         
+        /*
+         * OVERRIDE METHOD printRecipe
+         *      PRINT "Drink Recipe: " + title
+         *      PRINT "Servings: " + servings
+         *      PRINT "Contains alcohol: " + isAlcoholic
+         *      PRINT "Average Rating: " + getAverageRating()
+         *      PRINT ingredients list
+         *      PRINT tags if applicable
+         * END METHOD
+         */
+        
+        //END CLASS
     }
 }
