@@ -9,15 +9,13 @@ public class MainDishRecipe extends Recipe
 {
     private boolean containsProtein;
     
+    public MainDishRecipe(String title, int servings, boolean containsProtein){
+        super(title, servings);
+        this.containsProtein = containsProtein;
+    }
+    
     public void act(){
         
-    }
-
-    public void MainDishRecipe(/*title, servings, containsProtein*/){
-        /*
-         * CALL Recipe constructor with title and servings
-         * SET this.containsProtein = containsProtein
-         */
     }
     
     /*

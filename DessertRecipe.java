@@ -7,9 +7,12 @@
  */
 public class DessertRecipe extends Recipe
 {
-    // instance variables - replace the example below with your own
-    private boolean containsSugar = true;
+    private boolean hasSugar;
     
+    public DessertRecipe(String title, int servings, boolean hasSugar){
+        super(title, servings);
+        this.hasSugar = hasSugar;
+    }
     /*
      * METHOD DessertRecipe(title, servings, hasSugar)
      *      CALL Recipe constructor with title and servings

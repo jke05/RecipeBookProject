@@ -1,28 +1,23 @@
+
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * The test class RecipeTest.
+ * The test class TestDessertRecipe.
  *
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class RecipeTest
+public class TestDessertRecipe
 {
-    
-    @Test 
-    public void testAddMultipleRatingsAndAverage(){
-       
-    }
-    
-    @Test
-    public void testPrint()
+    /**
+     * Default constructor for test class TestDessertRecipe
+     */
+    public TestDessertRecipe()
     {
-        DessertRecipe dessert = new DessertRecipe("Pie", 3, true);
-         
-        dessert.printRecipe();
     }
 
     /**

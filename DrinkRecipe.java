@@ -9,7 +9,10 @@ public class DrinkRecipe extends Recipe
 {
     private boolean containsAlcohol;
 
-    public void DrinkRecipe(){
+    public DrinkRecipe(String title, int servings, boolean containsAlcohol){
+        super(title, servings);
+        this.containsAlcohol = containsAlcohol;
+        
         /*
          * METHOD DrinkRecipe(title, servings, isAlcoholic)
          *      CALL Recipe constructor with title and servings
