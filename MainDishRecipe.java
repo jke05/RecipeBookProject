@@ -8,6 +8,10 @@
 public class MainDishRecipe extends Recipe
 {
     private boolean containsProtein;
+    
+    public void act(){
+        
+    }
 
     public void MainDishRecipe(/*title, servings, containsProtein*/){
         /*

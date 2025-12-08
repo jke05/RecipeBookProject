@@ -21,18 +21,25 @@ public class Recipe
     
     public void addIngredient(Ingredient ingredient){
         //ADD ingredient TO ingredients
+        ingredients.add(ingredient);
     }
     
     public void printRecipe(){
         /*
          * PRINT title, servings, rating, comment, ingredients, tags
          */
+        System.out.println(title);
+        System.out.println(servings);
+        System.out.println(ingredients);
+        System.out.println(tags);
+        
     }
     
     public void addRating(/*score, comment*/){
         /*Create new Rating using score, comment
          * ADD Rating to ratings
            */
+        
     }
     
     public void scale(int servings){
