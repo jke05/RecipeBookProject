@@ -6,7 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * The test class RecipeTest.
+ * Unit tests for the Recipe class.
+ * Verifies rating logic, average rating calculation,
+ * and input validation.
  *
  * Gilbert Aquino
  * @version 1.0 Deliverable 2

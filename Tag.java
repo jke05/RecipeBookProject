@@ -1,11 +1,11 @@
 
 /**
- * Write a description of class Tag here.
+ * Represents descriptive tags that categorize recipes
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gilbert Aquino
+ * @version 1.0
  */
 enum Tag
 {
-    EASY, QUICK, HEALTHY, SPICY;
+    EASY, QUICK, HEALTHY, SPICY, HALAL;
 }

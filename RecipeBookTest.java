@@ -6,30 +6,38 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * The test class RecipeBookTest.
+ * Unit tests for the RecipeBook class.
+ * Verifies adding recipes and identifying the top-rated recipe.
  *
- * @author  (your name)
- * @version (a version number or a date)
+ * @author  Gilbert Aquino
+ * @version 1.0
  */
-class Recipe{}
-class MainDishRecipe extends Recipe{}
-class DrinkRecipe extends Recipe{}
-class DessertRecipe extends Recipe{}
+
 public class RecipeBookTest
 {
     private RecipeBook book;
+    
+    public RecipeBookTest(){
+        
+    }
 
     @BeforeEach
     public void setUp(){
         book = new RecipeBook("RecipeBookOfGood", "John", "Gilbert", "Dec 8th 2025");
         book.title = "The Book";
+        book = new RecipeBook("The Book", "John", "Gilbert", "Dec 8th 2025");
+    }
+    
+    @AfterEach
+    public void tearDown(){
+        book = null;
     }
     
     @Test
-    
+    public void testSearchByTitle(){
+        Recipe r = new Recipe("Pancakes", 2);
+        book.addRecipe(r);
 
-    @AfterEach
-    public void tearDown(){
-        
+        assertDoesNotThrow(() -> book.searchByTitle("Pancakes"));
     }
 }

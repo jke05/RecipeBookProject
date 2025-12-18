@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class DessertRecipe here.
+ * Represents a dessert recipe. Extends Recipe and includes
+ * information about whether the dessert contains sugar.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gilbert Aquino
+ * @version 1.0
  */
 public class DessertRecipe extends Recipe
 {
@@ -13,23 +14,14 @@ public class DessertRecipe extends Recipe
         super(title, servings);
         this.hasSugar = hasSugar;
     }
-    /*
-     * METHOD DessertRecipe(title, servings, hasSugar)
-     *      CALL Recipe constructor with title and servings
-     *      SET this.hasSugar = hasSugar
-     * END METHOD
-     */
     
-    /*
-     * OVERRIDE METHOD printRecipe
-     *      PRINT "Dessert Recipe: " + title
-     *      PRINT "Servings: " + servings
-     *      PRINT "Has sugar: " + hasSugar
-     *      PRINT "Average Rating: " + getAverageRating()
-     *      PRINT ingredients list
-     *      PRINT steps or tags if applicable
-     * END METHOD
-     */
-    
-    //END CLASS
+    @Override
+    public void printRecipe() {
+        System.out.println("Dessert Recipe: " + getTitle());
+        System.out.println("Servings: " + getServings());
+        System.out.println("Has sugar: " + hasSugar);
+        System.out.println("Average Rating: " + getAverageRating());
+        System.out.println("Ingredients: " + getIngredients());
+        System.out.println("Tags: " + getTags());
+    }
 }

@@ -1,13 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Class Recipe
- * Represents a recipe with a title, servings, ingredients, tags, and ratings.
- *
- * @author Gilbert Aquino
- * @version Deliverable 2
- */
-
 public class Recipe
 {
     private String title;
@@ -20,7 +12,7 @@ public class Recipe
         this.title = "";
         this.servings = 0;
     }
-
+    
     public Recipe(String title, int servings){
         this.title = title;
         this.servings = servings;
@@ -39,7 +31,7 @@ public class Recipe
          */
         System.out.println("Title: " + title);
         System.out.println("Servings: " + servings);
-        System.out.println("Average Rating: " + getAverageRating());
+        System.out.println("Average Rating: " + getAverageRating() + " Stars");
         System.out.println("Ingredients: " + ingredients);
         System.out.println("Tags: " + tags);
         
@@ -53,20 +45,6 @@ public class Recipe
     }
     
     public void scale(int newServings){
-        //IF newServings <= 0
-        //STOP
-        //ELSE 
-        
-        /*
-         * SET factor = newServings / servings
-         * 
-         * for EACH ingredient IN ingredients
-         * ingredient.quantity = ingredient.quantity * factor
-         * END FOR LOOP
-         * 
-         * SET servings = newServings
-         */
-        
         if (newServings <= 0) {
             return;
         }
@@ -99,10 +77,32 @@ public class Recipe
         return total/ratings.size();
     }
     
+    public String getTitle() {
+        return title;
+    }
+    
+    public void addTag(Tag tag) {
+        if(tag != null) {
+            tags.add(tag);
+        }
+    }
+    
+    public ArrayList<Tag> getTags() {
+        return tags;
+    }
+    
+    public int getServings() {
+        return servings;
+    }
+    
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
+    }
+    
     @Override 
     public String toString() {
         return "Recipe{" +
-               "title='" + title + "/" + 
+               "title=" + title+ 
                ", servings=" + servings +
                ", averageRating=" + getAverageRating() +
                "}";
