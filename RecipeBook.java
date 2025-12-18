@@ -65,21 +65,24 @@ public class RecipeBook
     }
     
     public void listByType(){
+        System.out.println("=== Main Dishes ===");
         for (Recipe r : recipes){
             if (r instanceof MainDishRecipe){
-                System.out.println(r);
+                r.printRecipe();
             }
         }
         
+        System.out.println("=== Drinks ===");
         for (Recipe r : recipes){
             if (r instanceof DrinkRecipe){
-                System.out.println(r);
+                r.printRecipe();
             }
         }
         
+        System.out.println("=== Desserts ===");
         for (Recipe r : recipes){
             if (r instanceof DessertRecipe){
-                System.out.println(r);
+                r.printRecipe();;
             }
             }
         }
@@ -95,48 +98,74 @@ public class RecipeBook
     }
     
     public void searchByIngredient(String ingredientName) {
+        boolean found = false;
+
         for (Recipe r : recipes) {
             for (Ingredient i : r.getIngredients()) {
                 if (i.getName().equalsIgnoreCase(ingredientName)) {
-                    System.out.println(r);
+                    r.printRecipe();
+                    found = true;
+                    break;
                 }
             }
+        }
+
+        if (!found) {
+        System.out.println("No recipes found with that ingredient.");
         }
     }
     
     public void searchByUnit(String unitName) {
         Unit wanted = Unit.valueOf(unitName.toUpperCase());
 
-        for (Recipe r : recipes) {
-            for (Ingredient i : r.getIngredients()) {
-                if (i.getUnit() == wanted) {
-                    System.out.println(r);
+            for (Recipe r : recipes) {
+                for (Ingredient i : r.getIngredients()) {
+                    if (i.getUnit() == wanted) {
+                        System.out.println(r);
+                    }
                 }
             }
         }
-    }
     
     public void searchByTag(String tagName) {
-        Tag wanted = Tag.valueOf(tagName.toUpperCase());
+    boolean found = false;
+    Tag wanted = null;  
 
-        for (Recipe r : recipes) {
-            if (r.getTags().contains(wanted)) {
-            System.out.println(r);
+        for (Tag t : Tag.values()) {
+            if (t.name().equalsIgnoreCase(tagName)) {
+                wanted = t;
+                break;
             }
         }
+    
+        if (wanted == null) {
+            System.out.println("Invalid tag.");
+            return;
+        }
+    
+        for (Recipe r : recipes) {
+            if (r.getTags().contains(wanted)) {
+                r.printRecipe();
+                found = true;
+            }
+        }
+    
+        if (!found) {
+            System.out.println("No recipes found with that tag.");
+        }
     }
-   
+       
     public Recipe getTopRated(){
         if(recipes.isEmpty()){
             return null;
         }
         
         Recipe bestRecipe = recipes.get(1);
-        for (Recipe r: recipes) {
-            if (r.getAverageRating() > bestRecipe.getAverageRating()){
-                bestRecipe = r;
-            }   
-        }
+            for (Recipe r: recipes) {
+                if (r.getAverageRating() > bestRecipe.getAverageRating()){
+                    bestRecipe = r;
+                }   
+            }
         return bestRecipe;
-    }
+        }
 }
