@@ -32,6 +32,14 @@ public class Ingredient
         this.quantity = quantity;
     }
     
+    public String getName() {
+        return name;
+    }
+    
+    public Unit getUnit() {
+        return unit;
+    }
+    
     @Override
     public String toString() {
         return name + " (" + quantity + " " + unit + ")";

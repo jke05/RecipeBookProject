@@ -54,7 +54,7 @@ public class RecipeBook
                 return r;
             }
         }
-    return null; 
+        return null; 
     }
     
     
@@ -92,8 +92,40 @@ public class RecipeBook
             System.out.print("No recipe found");
         }
         }
-    }   
+    }
     
+    public void searchByIngredient(String ingredientName) {
+        for (Recipe r : recipes) {
+            for (Ingredient i : r.getIngredients()) {
+                if (i.getName().equalsIgnoreCase(ingredientName)) {
+                    System.out.println(r);
+                }
+            }
+        }
+    }
+    
+    public void searchByUnit(String unitName) {
+        Unit wanted = Unit.valueOf(unitName.toUpperCase());
+
+        for (Recipe r : recipes) {
+            for (Ingredient i : r.getIngredients()) {
+                if (i.getUnit() == wanted) {
+                    System.out.println(r);
+                }
+            }
+        }
+    }
+    
+    public void searchByTag(String tagName) {
+        Tag wanted = Tag.valueOf(tagName.toUpperCase());
+
+        for (Recipe r : recipes) {
+            if (r.getTags().contains(wanted)) {
+            System.out.println(r);
+            }
+        }
+    }
+   
     public Recipe getTopRated(){
         if(recipes.isEmpty()){
             return null;
@@ -104,7 +136,7 @@ public class RecipeBook
             if (r.getAverageRating() > bestRecipe.getAverageRating()){
                 bestRecipe = r;
             }   
-    }
-    return bestRecipe;
+        }
+        return bestRecipe;
     }
 }

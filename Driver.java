@@ -16,10 +16,16 @@ public class Driver
         boolean running = true;
         while (running) {
             System.out.println("\n--- MENU ---");
-            System.out.println("1) List all recipes");
-            System.out.println("2) Add a recipe");
-            System.out.println("3) Top rated recipe");
-            System.out.println("0) Quit");
+            System.out.println("1) Print book details");
+            System.out.println("2) List all recipes");
+            System.out.println("3) List by type");
+            System.out.println("4) Search by title, ingredient, or tag");
+            System.out.println("5) Print recipe details");
+            System.out.println("6) Rate a recipe");
+            System.out.println("7) List top-rated recipes");
+            System.out.println("8) Scale by number of servings");
+            System.out.println("9) Add your own recipe");
+            System.out.println("0) Exit");
             System.out.print("Choose: ");
 
             int choice = scan.nextInt();
@@ -31,118 +37,168 @@ public class Driver
                     break;
 
                 case 1:
-                    book.listAll();
+                    book.printDetails();
                     break;
                 
                 case 2:
-                    addRecipeFlow(scan, book);
+                    book.listAll();
                     break;
 
                 case 3:
-                    Recipe top = book.getTopRated();
-                    if (top == null) {
-                        System.out.println("No recipes yet.");
+                    book.listByType();
+                    break;
+                    
+                case 4:
+                    System.out.println("Search by: ");
+                    System.out.println("1) Title");
+                    System.out.println("2) Ingredient");
+                    System.out.println("3) Tag");
+                    System.out.print("Choose: ");
+                    
+                    int s = scan.nextInt();
+                    scan.nextLine();
+                    
+                    System.out.print("Enter search term: ");
+                    String term = scan.nextLine();
+                    
+                    if (s == 1) {
+                        book.searchByTitle(term);
+                    } else if (s ==2) {
+                        book.searchByIngredient(term);
+                    } else if (s == 3) {
+                        book.searchByTag(term);
                     } else {
-                        System.out.println("Top rated recipe:");
-                        System.out.println(top);
+                        System.out.println("Invalid search.");
                     }
+            
+                    break;
+                    
+                case 5:
+                    System.out.print("Enter the recipe title to print: ");
+                    String t1 = scan.nextLine();
+                    Recipe r1 = book.findByTitle(t1);
+                    if (r1 == null) System.out.println("Recipe not found.");
+                    else r1.printRecipe();
+                    break;
+                
+                case 6:
+                    System.out.print("Enter recipe title to rate: ");
+                    String t2 = scan.nextLine();
+                    Recipe r2 = book.findByTitle(t2);
+                    if (r2 == null) {
+                        System.out.println("Recipe not found.");
+                    } else {
+                        while (true) {
+                            System.out.print("Enter rating 1-5 (0 to stop): ");
+                            double rating = scan.nextDouble();
+                            scan.nextLine();
+                            if (rating == 0) break;
+                            r2. addRating(rating);
+                        }
+                    }
+                    break;
+                    
+                case 7:
+                    System.out.println("Top rated recipe:");
+                    System.out.println(book.getTopRated());
+                    break;
+                    
+                case 8: 
+                    System.out.print("Enter recipe title to scale: ");
+                    String t3 = scan.nextLine();
+                    Recipe r3 = book.findByTitle(t3);
+                    if (r3 == null) {
+                        System.out.println("Recipe not found.");
+                    } else {
+                        System.out.print("enter new servings: ");
+                        int ns = scan.nextInt();
+                        scan.nextLine();
+                        r3.scale(ns);
+                        r3.printRecipe();
+    
+                    }
+                
+                    break;
+                    
+                case 9:
+                    System.out.print("Enter recipe title: ");
+                    String newTitle = scan.nextLine();
+                    
+                    System.out.print("Enter servings: ");
+                    int newServings = scan.nextInt();
+                    scan.nextLine();
+                    
+                    Recipe newRecipe = new Recipe(newTitle, newServings);
+                    
+                    while (true) {
+                        System.out.print("Enter rating 1-5 (or 0 to stop): ");
+                        double rt = scan.nextDouble();
+                        scan.nextLine();
+                        if (rt == 0) break;
+                        newRecipe.addRating(rt);
+                    }
+                    
+                    while (true) {
+                        System.out.print("Add ingredient? (y/n): ");
+                        String yn = scan.nextLine().trim().toLowerCase();
+                        if (!yn.equals("y")) break;
+                        
+                        System.out.print("Ingredient name: ");
+                        String ingName = scan.nextLine();
+                        
+                        System.out.print("Quantity: ");
+                        double qty = scan.nextDouble();
+                        scan.nextLine();
+                        
+                        System.out.print("Unit (ML, LITER, CUP, GRAM): ");
+                        String unitStr = scan.nextLine().trim().toUpperCase();
+                        
+                        Unit unit;
+                        try {
+                            unit = Unit.valueOf(unitStr);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Invalid unit, defaulting to CUP");
+                            unit = Unit.CUP;
+                        }
+                        
+                        Ingredient ing = new Ingredient(ingName, qty, unit);
+                        newRecipe.addIngredient(ing);
+                    }
+                        
+                        while (true) {
+                            System.out.print("Add tag? (y/n): ");
+                            String yn = scan.nextLine().trim().toLowerCase();
+                            if (!yn.equals("y")) break;
+                            
+                            System.out.print("Tag (EASY, QUICK, HEALTHY, SPICY, HALAL): ");
+                            String tagName = scan.nextLine().trim().toUpperCase();
+                        
+                        
+                        try { 
+                            Tag tag = Tag.valueOf(tagName.toUpperCase());
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Invalid tag.");
+                        }
+                        System.out.println("Invalid tag.");
+                    }
+                    
+                    book.addRecipe(newRecipe);
+                    System.out.println("Recipe added!");
+                    
                     break;
                 
                 default: 
-                    System.out.println("Invalid Choice.");
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
             }
+            
         }
+        
         System.out.println("Goodbye!");
-        scan.close();
+        scan.close();    
     }
-    
-     private static void addRecipeFlow(Scanner scan, RecipeBook book) {
-        System.out.print("Enter recipe title: ");
-        String title = scan.nextLine();
-
-        System.out.print("Enter servings: ");
-        int servings = scan.nextInt();
-        scan.nextLine(); // consume newline
-
-        Recipe r = new Recipe(title, servings);
-
-        // Rating (optional)
-        System.out.print("Enter a rating 1-5 (or 0 to skip): ");
-        double rating = scan.nextDouble();
-        scan.nextLine();
-        if (rating != 0) {
-            r.addRating(rating);
-        }
-
-        // Ingredients loop
-        boolean addingIngredients = true;
-        while (addingIngredients) {
-            System.out.print("Add ingredient? (y/n): ");
-            String yn = scan.nextLine().trim().toLowerCase();
-
-            if (!yn.equals("y")) {
-                addingIngredients = false;
-            } else {
-                System.out.print("Ingredient name: ");
-                String name = scan.nextLine();
-
-                System.out.print("Quantity: ");
-                double qty = scan.nextDouble();
-                scan.nextLine();
-
-                System.out.print("Unit (ML, LITER, CUP, GRAM): ");
-                String unitStr = scan.nextLine().trim().toUpperCase();
-
-                Unit unit;
-                try {
-                    unit = Unit.valueOf(unitStr);
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Invalid unit, defaulting to CUP");
-                    unit = Unit.CUP;
-                }
-
-                Ingredient ing = new Ingredient(name, qty, unit);
-                r.addIngredient(ing);
-            }
-        }
-
-        book.addRecipe(r);
-        System.out.println("Recipe added!");
-    }
-    
-    private static void addRatingToRecipe(Scanner scan, RecipeBook book) {
-    if (book.getTopRated() == null) {
-        System.out.println("No recipes available.");
-        return;
-    }
-
-    book.listAll();
-
-    System.out.print("Enter recipe title to rate: ");
-    String title = scan.nextLine();
-
-    Recipe target = book.findByTitle(title);
-
-    if (target == null) {
-        System.out.println("Recipe not found.");
-        return;
-    }
-
-    while (true) {
-        System.out.print("Enter rating 1-5 (or 0 to stop): ");
-        double rating = scan.nextDouble();
-        scan.nextLine();
-
-        if (rating == 0) {
-            break;
-        }
-
-        target.addRating(rating);
-    }
-
-    System.out.println("Rating(s) added.");
 }
-}
+
 
 
         
