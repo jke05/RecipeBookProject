@@ -126,7 +126,7 @@ public class Recipe
     @Override 
     public String toString() {
         return "Recipe{" +
-               "title='" + title + "/" + 
+               "title=" + title+ 
                ", servings=" + servings +
                ", averageRating=" + getAverageRating() +
                "}";

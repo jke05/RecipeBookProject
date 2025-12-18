@@ -31,4 +31,9 @@ public class Ingredient
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
+    
+    @Override
+    public String toString() {
+        return name + " (" + quantity + " " + unit + ")";
+    }
 }
