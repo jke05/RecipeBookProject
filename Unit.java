@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Unit here.
+ * Represents units of measurement used for recipe ingredients.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gilbert Aquino
+ * @version 1.0
  */
 enum Unit
 {

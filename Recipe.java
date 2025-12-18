@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 /**
  * Class Recipe
- * Represents a recipe with a title, servings, ingredients, tags, and ratings.
+ * Represents a recipe with a title, servings, ingredients, tags,
+ * and ratings. Provides functionality to scale ingredients
+ * and calculate an average rating.
  *
  * @author Gilbert Aquino
  * @version Deliverable 2
@@ -97,6 +99,28 @@ public class Recipe
             total += r;
         }
         return total/ratings.size();
+    }
+    
+    public String getTitle() {
+        return title;
+    }
+    
+    public void addTag(Tag tag) {
+        if(tag != null) {
+            tags.add(tag);
+        }
+    }
+    
+    public ArrayList<Tag> getTags() {
+        return tags;
+    }
+    
+    public int getServings() {
+        return servings;
+    }
+    
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
     }
     
     @Override 

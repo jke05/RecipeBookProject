@@ -1,8 +1,9 @@
 
 /**
- * Write a description of class Ingredient here.
+ * Represents an ingredient used in a recipe, including its name,
+ * quantity, and measurement unit.
  *
- * @author (Gilbert)
+ * @author Gilbert Aquino
  * @version 1.0
  */
 public class Ingredient

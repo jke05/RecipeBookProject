@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class MainDishRecipe here.
+ * Represents a main dish recipe. Extends Recipe and includes
+ * information about whether the dish contains protein.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gilbert Aquino
+ * @version V 1.0
  */
 public class MainDishRecipe extends Recipe
 {
@@ -14,22 +15,13 @@ public class MainDishRecipe extends Recipe
         this.containsProtein = containsProtein;
     }
     
-    public void act(){
-        
-    }
-    
-    /*
-     * @Override
-     * 
-     * METHOD printRecipe
-     *   PRINT "Main Dish Recipe: " + title
-     *   PRINT "Servings: " + servings
-     *   PRINT "Contains protein: " + containsProtein
-     *   PRINT "Average Rating: " + getAverageRating()
-     *   PRINT ingredients list
-     *   PRINT tags (if applicable)
-     *   END METHOD
-     */
-    
-    //END CLASS
+    @Override
+    public void printRecipe() {
+    System.out.println("Main Dish Recipe: " + getTitle());
+    System.out.println("Servings: " + getServings());
+    System.out.println("Contains protein: " + containsProtein);
+    System.out.println("Average Rating: " + getAverageRating());
+    System.out.println("Ingredients: " + getIngredients());
+    System.out.println("Tags: " + getTags());
+}
 }
