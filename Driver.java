@@ -25,14 +25,53 @@ public class Driver
             int choice = scan.nextInt();
             scan.nextLine(); // consume newline
 
-            if (choice == 0) {
+            switch(choice) {
+                case 0:
                 running = false;
-            } else {
-                System.out.println("Not implemented yet.");
+                    break;
+
+                case 1:
+                    book.listAll();
+                    break;
+                
+                case 2:
+                    addRecipeFlow(scan, book);
+                    break;
+
+                case 3:
+                    Recipe top = book.getTopRated();
+                    if (top == null) {
+                        System.out.println("No recipes yet.");
+                    } else {
+                        System.out.println("Top rated recipe:");
+                        System.out.println(top);
+                    }
+                    break;
+                
+                default: 
+                    System.out.println("Invalid Choice.");
             }
         }
-
         System.out.println("Goodbye!");
         scan.close();
+    }
+    
+    private static void addRecipeFlow(Scanner scan, RecipeBook book) {
+        System.out.print("Enter recipe title: ");
+        String title = scan.nextLine();
+        
+        System.out.print("Enter servings: ");
+        int servings = scan.nextInt();
+        scan.nextLine(); // consume newline
+
+        Recipe r = new Recipe(title, servings);
+
+        // Ratings (optional)
+        System.out.print("Enter a rating 1-5 (or 0 to skip): ");
+        double rating = scan.nextDouble();
+        scan.nextLine();
+        if (rating != 0) {
+            r.addRating(rating);
+        }
     }
 }
