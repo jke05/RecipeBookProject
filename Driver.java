@@ -121,6 +121,16 @@ public class Driver
                     break;
                     
                 case 9:
+                    
+                    System.out.println("Select recipe type:");
+                    System.out.println("1) Main Dish");
+                    System.out.println("2) Drink");
+                    System.out.println("3) Dessert");
+                    System.out.print("Choose: ");
+                    
+                    int type = scan.nextInt();
+                    scan.nextLine();
+
                     System.out.print("Enter recipe title: ");
                     String newTitle = scan.nextLine();
                     
@@ -128,7 +138,30 @@ public class Driver
                     int newServings = scan.nextInt();
                     scan.nextLine();
                     
-                    Recipe newRecipe = new Recipe(newTitle, newServings);
+                    Recipe newRecipe;
+                    
+                if (type == 1) {
+                    System.out.print("Contains protein? (true/false): ");
+                    boolean protein = scan.nextBoolean();
+                    scan.nextLine();
+                    newRecipe = new MainDishRecipe(newTitle, newServings, protein);
+                
+                } else if (type == 2) {
+                    System.out.print("Contains alcohol? (true/false): ");
+                    boolean alcohol = scan.nextBoolean();
+                    scan.nextLine();
+                    newRecipe = new DrinkRecipe(newTitle, newServings, alcohol);
+                
+                } else if (type == 3) {
+                    System.out.print("Has sugar? (true/false): ");
+                    boolean sugar = scan.nextBoolean();
+                    scan.nextLine();
+                    newRecipe = new DessertRecipe(newTitle, newServings, sugar);
+                
+                } else {
+                    System.out.println("Invalid type. Defaulting to Main Dish.");
+                    newRecipe = new MainDishRecipe(newTitle, newServings, false);
+                }
                     
                     while (true) {
                         System.out.print("Enter rating 1-5 (or 0 to stop): ");
