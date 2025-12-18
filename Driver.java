@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 /**
  * Write a description of class Driver here.
@@ -8,25 +9,30 @@
 public class Driver
 {
     public static void main(String[] args) {
-        RecipeBook book = new RecipeBook("My Recipe Book", "John", "Gilbert", "Dec 2025");
-        
-        System.out.println(book);
-        
-        Recipe r1 = new Recipe("Pancakes", 2);
-        r1.addRating(4.0);
-        book.addRecipe(r1);
-        
-        System.out.println("All Recipes:");
-        book.listAll();
-        
-        Ingredient flour = new Ingredient("Flour", 1.0, Unit.CUP);
-        r1.addIngredient(flour);
-        
-        System.out.println("\nBefore scaling:");
-        r1.printRecipe();
-        
-        r1.scale(4);
-        System.out.println("After scaling:");
-        r1.printRecipe();
+        Scanner scan = new Scanner(System.in);
+
+        RecipeBook book = new RecipeBook("My Recipe Book", "Gilbert Aquino", "John Espinosa", "Dec 2025");
+
+        boolean running = true;
+        while (running) {
+            System.out.println("\n--- MENU ---");
+            System.out.println("1) List all recipes");
+            System.out.println("2) Add a recipe");
+            System.out.println("3) Top rated recipe");
+            System.out.println("0) Quit");
+            System.out.print("Choose: ");
+
+            int choice = scan.nextInt();
+            scan.nextLine(); // consume newline
+
+            if (choice == 0) {
+                running = false;
+            } else {
+                System.out.println("Not implemented yet.");
+            }
+        }
+
+        System.out.println("Goodbye!");
+        scan.close();
     }
 }
