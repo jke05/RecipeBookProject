@@ -109,6 +109,39 @@ public class Driver
         book.addRecipe(r);
         System.out.println("Recipe added!");
     }
+    
+    private static void addRatingToRecipe(Scanner scan, RecipeBook book) {
+    if (book.getTopRated() == null) {
+        System.out.println("No recipes available.");
+        return;
+    }
+
+    book.listAll();
+
+    System.out.print("Enter recipe title to rate: ");
+    String title = scan.nextLine();
+
+    Recipe target = book.findByTitle(title);
+
+    if (target == null) {
+        System.out.println("Recipe not found.");
+        return;
+    }
+
+    while (true) {
+        System.out.print("Enter rating 1-5 (or 0 to stop): ");
+        double rating = scan.nextDouble();
+        scan.nextLine();
+
+        if (rating == 0) {
+            break;
+        }
+
+        target.addRating(rating);
+    }
+
+    System.out.println("Rating(s) added.");
+}
 }
 
 

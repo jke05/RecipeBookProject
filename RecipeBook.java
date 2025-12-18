@@ -48,6 +48,16 @@ public class RecipeBook
         System.out.println(this);
     }
     
+    public Recipe findByTitle(String title) {
+        for (Recipe r: recipes) {
+            if(r.getTitle().equalsIgnoreCase(title)) {
+                return r;
+            }
+        }
+    return null; 
+    }
+    
+    
     public void listAll(){
         for (Recipe r : recipes){
             System.out.println(r);
