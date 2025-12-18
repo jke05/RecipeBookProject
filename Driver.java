@@ -56,22 +56,60 @@ public class Driver
         scan.close();
     }
     
-    private static void addRecipeFlow(Scanner scan, RecipeBook book) {
+     private static void addRecipeFlow(Scanner scan, RecipeBook book) {
         System.out.print("Enter recipe title: ");
         String title = scan.nextLine();
-        
+
         System.out.print("Enter servings: ");
         int servings = scan.nextInt();
         scan.nextLine(); // consume newline
 
         Recipe r = new Recipe(title, servings);
 
-        // Ratings (optional)
+        // Rating (optional)
         System.out.print("Enter a rating 1-5 (or 0 to skip): ");
         double rating = scan.nextDouble();
         scan.nextLine();
         if (rating != 0) {
             r.addRating(rating);
         }
+
+        // Ingredients loop
+        boolean addingIngredients = true;
+        while (addingIngredients) {
+            System.out.print("Add ingredient? (y/n): ");
+            String yn = scan.nextLine().trim().toLowerCase();
+
+            if (!yn.equals("y")) {
+                addingIngredients = false;
+            } else {
+                System.out.print("Ingredient name: ");
+                String name = scan.nextLine();
+
+                System.out.print("Quantity: ");
+                double qty = scan.nextDouble();
+                scan.nextLine();
+
+                System.out.print("Unit (ML, LITER, CUP, GRAM): ");
+                String unitStr = scan.nextLine().trim().toUpperCase();
+
+                Unit unit;
+                try {
+                    unit = Unit.valueOf(unitStr);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid unit, defaulting to CUP");
+                    unit = Unit.CUP;
+                }
+
+                Ingredient ing = new Ingredient(name, qty, unit);
+                r.addIngredient(ing);
+            }
+        }
+
+        book.addRecipe(r);
+        System.out.println("Recipe added!");
     }
 }
+
+
+        

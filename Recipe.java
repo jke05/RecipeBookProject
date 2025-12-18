@@ -22,7 +22,14 @@ public class Recipe
         this.title = "";
         this.servings = 0;
     }
-
+    
+    
+    /**
+     * Creates a recipe with the given title and number of servings
+     * 
+     * @param title the name of the recipe
+     * @param servings the number of servings this recipe makes
+     */
     public Recipe(String title, int servings){
         this.title = title;
         this.servings = servings;
