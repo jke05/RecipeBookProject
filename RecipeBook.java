@@ -88,14 +88,20 @@ public class RecipeBook
         }
     
     public void searchByTitle(String title){
-        for(Recipe r : recipes){
-        if (getTitle().equalsIgnoreCase(title)){
-            System.out.println(r);
-        }else{
-            System.out.print("No recipe found");
+    boolean found = false;
+
+        for (Recipe r : recipes) {
+            if (r.getTitle().equalsIgnoreCase(title)) {
+                r.printRecipe();   // or System.out.println(r);
+                found = true;
+                break;             // stop after first match
+            }
         }
+
+        if (!found) {
+            System.out.println("No recipe found.");
         }
-    }
+    }   
     
     public void searchByIngredient(String ingredientName) {
         boolean found = false;
@@ -110,7 +116,7 @@ public class RecipeBook
             }
         }
 
-        if (!found) {
+            if (!found) {
         System.out.println("No recipes found with that ingredient.");
         }
     }
