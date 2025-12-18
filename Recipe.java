@@ -34,7 +34,6 @@ public class Recipe
         System.out.println("Average Rating: " + getAverageRating() + " Stars");
         System.out.println("Ingredients: " + ingredients);
         System.out.println("Tags: " + tags);
-        
     }
     
     public void addRating(double rating){

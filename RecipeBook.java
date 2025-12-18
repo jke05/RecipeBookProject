@@ -79,7 +79,6 @@ public class RecipeBook
     
     public void searchByTitle(String title){
         boolean found = false;
-
         for(Recipe r : recipes){
            if (r.getTitle().equalsIgnoreCase(title)){
                r.printRecipe();
