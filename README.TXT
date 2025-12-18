@@ -23,12 +23,12 @@ and view the top-rated recipe through a menu-driven interface.
 1. Make sure Java (JDK) is installed on your computer.
 2. Open a terminal or command prompt.
 3. Navigate to the folder that contains the project files.
-4. Compile the program by running:
 
-   javac *.java
+4. Exclude the tester files as sometimes JUnit files cause issues with Powershell by running: 
 
-5. Run the program using:
+   javac (Get-ChildItem *.java -Exclude *Test.java)
 
+5.
    java Driver
 
 6. Follow the on-screen menu instructions to use the program.
