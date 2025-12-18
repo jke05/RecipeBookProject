@@ -15,7 +15,10 @@ public class Driver
 
         boolean running = true;
         while (running) {
-            System.out.println("\n--- MENU ---");
+            System.out.println();
+            System.out.println("=======================================");
+            System.out.println("              RECIPE BOOK              ");
+            System.out.println("=======================================");  
             System.out.println("1) Print book details");
             System.out.println("2) List all recipes");
             System.out.println("3) List by type");
@@ -25,7 +28,9 @@ public class Driver
             System.out.println("7) List top-rated recipes");
             System.out.println("8) Scale by number of servings");
             System.out.println("9) Add your own recipe");
+            System.out.println("---------------------------------------");
             System.out.println("0) Exit");
+            System.out.println("=======================================");
             System.out.print("Choose: ");
 
             int choice = scan.nextInt();
@@ -38,14 +43,17 @@ public class Driver
 
                 case 1:
                     book.printDetails();
+                    System.out.println();
                     break;
                 
                 case 2:
                     book.listAll();
+                    System.out.println();
                     break;
 
                 case 3:
                     book.listByType();
+                    System.out.println();
                     break;
                     
                 case 4:
@@ -70,7 +78,8 @@ public class Driver
                     } else {
                         System.out.println("Invalid search.");
                     }
-            
+    
+                    System.out.println();
                     break;
                     
                 case 5:
@@ -79,6 +88,7 @@ public class Driver
                     Recipe r1 = book.findByTitle(t1);
                     if (r1 == null) System.out.println("Recipe not found.");
                     else r1.printRecipe();
+                    System.out.println();
                     break;
                 
                 case 6:
@@ -96,11 +106,13 @@ public class Driver
                             r2. addRating(rating);
                         }
                     }
+                    System.out.println();
                     break;
                     
                 case 7:
                     System.out.println("Top rated recipe:");
                     System.out.println(book.getTopRated());
+                    System.out.println();
                     break;
                     
                 case 8: 
@@ -115,9 +127,9 @@ public class Driver
                         scan.nextLine();
                         r3.scale(ns);
                         r3.printRecipe();
-    
                     }
-                
+                    
+                    System.out.println();                
                     break;
                     
                 case 9:
@@ -205,17 +217,13 @@ public class Driver
                             
                             System.out.print("Tag (EASY, QUICK, HEALTHY, SPICY, HALAL): ");
                             String tagName = scan.nextLine().trim().toUpperCase();
-                        
-                        
-                        try { 
-                            Tag tag = Tag.valueOf(tagName.toUpperCase());
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("Invalid tag.");
-                        }
-                        System.out.println("Invalid tag.");
+                            
+                            Tag tag = Tag.valueOf(tagName);
+                            newRecipe.addTag(tag);
                     }
                     
                     book.addRecipe(newRecipe);
+                    System.out.println();
                     System.out.println("Recipe added!");
                     
                     break;
