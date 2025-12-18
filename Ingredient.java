@@ -22,4 +22,12 @@ public class Ingredient
         this.quantity = quantity;
         this.unit = unit;
     }
+    
+    public double getQuantity() {
+        return quantity;
+    }
+    
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
 }

@@ -1,18 +1,20 @@
 import java.util.ArrayList;
 
 /**
- * Write a description of class Recipe here.
+ * Class Recipe
+ * Represents a recipe with a title, servings, ingredients, tags, and ratings.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gilbert Aquino
+ * @version Deliverable 2
  */
+
 public class Recipe
 {
     private String title;
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ArrayList<Tag> tags = new ArrayList<>();
     private int servings;
-    private ArrayList<Rating> rating = new ArrayList<>();
+    private ArrayList<Double> ratings = new ArrayList<>();
 
     public Recipe(String title, int servings){
         this.title = title;
@@ -21,28 +23,31 @@ public class Recipe
     
     public void addIngredient(Ingredient ingredient){
         //ADD ingredient TO ingredients
-        ingredients.add(ingredient);
+        if (ingredient != null) {
+            ingredients.add(ingredient);
+        }
     }
     
     public void printRecipe(){
         /*
-         * PRINT title, servings, rating, comment, ingredients, tags
+         * PRINT title, servings, average rating, ingredients, tags
          */
-        System.out.println(title);
-        System.out.println(servings);
-        System.out.println(ingredients);
-        System.out.println(tags);
+        System.out.println("Title: " + title);
+        System.out.println("Servings: " + servings);
+        System.out.println("Average Rating: " + getAverageRating());
+        System.out.println("Ingredients: " + ingredients);
+        System.out.println("Tags: " + tags);
         
     }
     
-    public void addRating(/*score, comment*/){
-        /*Create new Rating using score, comment
-         * ADD Rating to ratings
-           */
-        
+    public void addRating(double rating){
+        //ADD rating to ratings
+        if (rating >= 1 && rating <= 5){
+            ratings.add(rating);
+        }
     }
     
-    public void scale(int servings){
+    public void scale(int newServings){
         //IF newServings <= 0
         //STOP
         //ELSE 
@@ -56,5 +61,45 @@ public class Recipe
          * 
          * SET servings = newServings
          */
+        
+        if (newServings <= 0) {
+            return;
+        }
+        
+        double factor = (double) newServings/servings;
+        
+        for (Ingredient ingredient : ingredients) {
+            ingredient.setQuantity(ingredient.getQuantity() * factor);
+        }
+        servings = newServings;
+    }
+    
+    
+    public double getAverageRating() {
+        //IF RATINGS IS EMPTY
+        //SET total = 0
+        //ELSE
+        
+        //for EACH r in ratings
+        //SET total += r
+        //RETURN total / ratings size
+        
+        if(ratings.isEmpty()) {
+            return 0;
+        }
+        double total = 0;
+        for(double r : ratings) {
+            total += r;
+        }
+        return total/ratings.size();
+    }
+    
+    @Override 
+    public String toString() {
+        return "Recipe{" +
+               "title='" + title + "/" + 
+               ", servings=" + servings +
+               ", averageRating=" + getAverageRating() +
+               "}";
     }
 }
