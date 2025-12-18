@@ -21,7 +21,7 @@ public class RecipeBookTest
 
     @BeforeEach
     public void setUp(){
-        book = new RecipeBook("John", "Gilbert", "Dec 8th 2025");
+        book = new RecipeBook("RecipeBookOfGood", "John", "Gilbert", "Dec 8th 2025");
         book.title = "The Book";
     }
     

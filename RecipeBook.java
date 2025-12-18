@@ -9,7 +9,7 @@ public class RecipeBook
     String creationDate;
     
 
-    public RecipeBook(String author, String editor, String creationDate){
+    public RecipeBook(String title, String author, String editor, String creationDate){
         this.title = title;
         this.author = author;
         this.editor = editor;
@@ -27,7 +27,7 @@ public class RecipeBook
         return title;
     }
     
-    //@Override (optional idk why)
+    @Override
     public String toString(){
         return this.title + " " + this.author + " " + this.editor + " " +  this.creationDate;
     }
@@ -64,11 +64,11 @@ public class RecipeBook
     
     public void searchByTitle(String title){
         for(Recipe r : recipe){
-        if (getTitle().equalsIgnoreCase(title)){
-            printString();
-        }else{
-            System.out.print("No recipe found");
-        }
+           if (getTitle().equalsIgnoreCase(title)){
+               printString();
+           }else{
+               System.out.print("No recipe found");
+           } 
         }
     }   
     
