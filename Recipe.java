@@ -15,6 +15,11 @@ public class Recipe
     private ArrayList<Tag> tags = new ArrayList<>();
     private int servings;
     private ArrayList<Double> ratings = new ArrayList<>();
+    
+    public Recipe() {
+        this.title = "";
+        this.servings = 0;
+    }
 
     public Recipe(String title, int servings){
         this.title = title;
