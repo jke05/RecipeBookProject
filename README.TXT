@@ -21,8 +21,8 @@ and view the top-rated recipe through a menu-driven interface.
 ## Running the Program Outside of BlueJ
 
 1. Make sure Java (JDK) is installed on your computer.
-2. Open a terminal or command prompt.
-3. Navigate to the folder that contains the project files.
+2. Download the zip file through Code < Download ZIP
+3. Extract the file, and on the extracted file hold shift, rightclick and press on Open in Powershell.
 
 4. Exclude the tester files as sometimes JUnit files cause issues with Powershell by running: 
 
