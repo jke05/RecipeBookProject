@@ -3,8 +3,8 @@
  * Represents a drink recipe. Extends Recipe and includes
  * information about whether the drink contains alcohol.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gilbert Aquino
+ * @version 1.1
  */
 public class DrinkRecipe extends Recipe
 {

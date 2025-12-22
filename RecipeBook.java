@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * listed, searched, and compared to find the top-rated recipe.
  * 
  * @author John Knight Espinosa & Gilbert Aquino
- * @version 1.0
+ * @version 1.1
  */
 public class RecipeBook
 {
@@ -46,6 +46,10 @@ public class RecipeBook
 
     public void printString(){
         System.out.println(this);
+    }
+    
+    public ArrayList<Recipe> getRecipes() {
+        return recipes;
     }
     
     public void listAll(){
@@ -158,7 +162,7 @@ public class RecipeBook
             return null;
         }
         
-        Recipe bestRecipe = recipes.get(1);
+        Recipe bestRecipe = recipes.get(0);
         for (Recipe r: recipes) {
                 if (r.getAverageRating() > bestRecipe.getAverageRating()){
                     bestRecipe = r;

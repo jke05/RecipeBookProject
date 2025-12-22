@@ -1,5 +1,14 @@
 import java.util.ArrayList;
 
+/**
+ * The Recipe class represents a single recipe.
+ * It stores the recipe title, ingredients, tags,
+ * ratings, and serving information.
+ * 
+ * @author Gilbert Aquino
+ * @version 1.1
+ */
+
 public class Recipe
 {
     private String title;
