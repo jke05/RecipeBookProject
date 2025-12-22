@@ -68,7 +68,7 @@ public class Driver
                     scan.nextLine();
                     
                     System.out.print("Enter search term: ");
-                    String term = scan.nextLine();
+                    String term = scan.nextLine().trim();
                     
                     if (s == 1) {
                         book.searchByTitle(term);
@@ -238,45 +238,6 @@ public class Driver
         
         System.out.println("Goodbye!");
         scan.close();    
-    }
-    
-    private static void searchTitleContains(RecipeBook book, String term) {
-        term = term.toLowerCase();
-        boolean foundAny = false;
-    
-        for (Recipe r : book.getRecipes()) {   // requires getRecipes() in RecipeBook
-            if (r == null || r.getTitle() == null) continue;
-    
-            if (r.getTitle().toLowerCase().contains(term)) {
-                System.out.println("- " + r.getTitle());
-                foundAny = true;
-            }
-        }
-    
-        if (!foundAny) System.out.println("No matches found.");
-    }
-
-    private static void searchIngredientContains(RecipeBook book, String term) {
-        term = term.toLowerCase();
-        boolean foundAny = false;
-    
-        for (Recipe r : book.getRecipes()) {   // requires getRecipes() in RecipeBook
-            if (r == null) continue;
-    
-            boolean printed = false;
-    
-            for (Ingredient ing : r.getIngredients()) { // requires getIngredients() in Recipe
-                if (ing == null || ing.getName() == null) continue;
-    
-                if (ing.getName().toLowerCase().contains(term)) {
-                    if (!printed) {
-                        System.out.println("- " + r.getTitle());
-                        printed = true;
-                        foundAny = true;
-                    }
-                }
-            }
-        }
     }
 }
 
