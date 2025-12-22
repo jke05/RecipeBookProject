@@ -69,6 +69,11 @@ public class Driver
                     System.out.println("3) Tag");
                     System.out.print("Choose: ");
                     
+                    while(!scan.hasNextInt()) {
+                        System.out.println("Invalid input. Enter a number (1-3): ");
+                        scan.nextLine();
+                    }
+                    
                     int s = scan.nextInt();
                     scan.nextLine();
                     
