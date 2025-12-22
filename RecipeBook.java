@@ -86,7 +86,7 @@ public class RecipeBook
         String q = title.trim().toLowerCase();
         
         for(Recipe r : recipes){
-           if (r.getTitle().equalsIgnoreCase(title)){
+           if (r.getTitle().toLowerCase().startsWith(q)) {
                System.out.println(r.getTitle());
                found = true;
            }
@@ -114,7 +114,7 @@ public class RecipeBook
             boolean printed = false;
             
                 for (Ingredient i : r.getIngredients()){
-                    if (i.getName().toLowerCase().contains(q)) {
+                    if (i.getName().toLowerCase().startsWith(q)) {
                         if (!printed) {
                         System.out.println(r.getTitle());
                         printed = true;
