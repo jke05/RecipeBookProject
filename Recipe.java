@@ -89,7 +89,7 @@ public class Recipe
     public ArrayList<Tag> getTags() {
         return tags;
     }
-    
+        
     public int getServings() {
         return servings;
     }

@@ -9,11 +9,11 @@ import java.util.ArrayList;
  */
 public class RecipeBook
 {
-    String title;
-    ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-    String author;
-    String editor;
-    String creationDate;
+    private String title;
+    private ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+    private String author;
+    private String editor;
+    private String creationDate;
     
 
     public RecipeBook(String title, String author, String editor, String creationDate){
@@ -87,6 +87,15 @@ public class RecipeBook
                System.out.println("No recipe found");
            }
         }
+    }
+    
+    public Recipe findByTitle(String title) {
+        for (Recipe r: recipes) {
+            if(r.getTitle().equalsIgnoreCase(title)) {
+                return r;
+            }
+        }
+        return null; 
     }
     
     public void searchByIngredient(String ingredientName) {
