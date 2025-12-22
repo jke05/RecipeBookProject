@@ -83,13 +83,17 @@ public class RecipeBook
     
     public void searchByTitle(String title){
         boolean found = false;
+        String q = title.trim().toLowerCase();
+        
         for(Recipe r : recipes){
            if (r.getTitle().equalsIgnoreCase(title)){
-               r.printRecipe();
+               System.out.println(r.getTitle());
                found = true;
-           }else{
-               System.out.println("No recipe found");
            }
+        }
+           
+        if(!found) {
+            System.out.println("No recipes found.");
         }
     }
     
@@ -104,12 +108,18 @@ public class RecipeBook
     
     public void searchByIngredient(String ingredientName) {
         boolean found = false;
+        String q = ingredientName.trim().toLowerCase();
+        
         for (Recipe r : recipes) {
-            for (Ingredient i : r.getIngredients()){
-                if (i.getName().equalsIgnoreCase(ingredientName)) {
-                    r.printRecipe();
-                    found = true;
-                    break;
+            boolean printed = false;
+            
+                for (Ingredient i : r.getIngredients()){
+                    if (i.getName().toLowerCase().contains(q)) {
+                        if (!printed) {
+                        System.out.println(r.getTitle());
+                        printed = true;
+                        found = true;
+                    }
                 }
             }
         }
@@ -132,26 +142,22 @@ public class RecipeBook
     
     public void searchByTag(String tagName){
         boolean found = false;
-        Tag wanted = null;  
-        for (Tag t : Tag.values()) {
-            if (t.name().equalsIgnoreCase(tagName)) {
-                wanted = t;
-                break;
-            }
-        }
-    
-        if (wanted == null) {
-            System.out.println("Invalid tag.");
-            return;
-        }
-    
+        String q = tagName.trim().toUpperCase();
+        
         for (Recipe r : recipes) {
-            if (r.getTags().contains(wanted)) {
-                r.printRecipe();
-                found = true;
+            boolean printed = false;
+            
+            for (Tag t: r.getTags()) {
+                if (t.name().startsWith(q)) {
+                    if (!printed) {
+                        System.out.println(r.getTitle() + " (tag: " + t.name() + ")");
+                        printed = true;
+                        found = true;
+                    }
+                }
             }
         }
-    
+        
         if (!found) {
             System.out.println("No recipes found with that tag.");
         }

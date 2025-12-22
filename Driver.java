@@ -34,8 +34,13 @@ public class Driver
             System.out.println("=======================================");
             System.out.print("Choose: ");
 
-            int choice = scan.nextInt();
-            scan.nextLine(); // consume newline
+            while (!scan.hasNextInt()) {
+                System.out.print("Invalid input. Enter a number: ");
+                scan.nextLine();
+            }
+            
+            int choice = scan.nextInt(); 
+            scan.nextLine();
 
             switch(choice) {
                 case 0:
@@ -101,10 +106,23 @@ public class Driver
                     } else {
                         while (true) {
                             System.out.print("Enter rating 1-5 (0 to stop): ");
+                            
+                            while (!scan.hasNextDouble()) {
+                            System.out.print("Invalid input. Enter a number: ");
+                            scan.nextLine();
+                            }
+                            
                             double rating = scan.nextDouble();
                             scan.nextLine();
+                            
                             if (rating == 0) break;
-                            r2. addRating(rating);
+                            
+                            if(rating < 1 || rating > 5) {
+                                System.out.println("Rating must be 1-5.");
+                                continue;
+                            }
+                            
+                            r2.addRating(rating);
                         }
                     }
                     System.out.println();
@@ -123,7 +141,11 @@ public class Driver
                     if (r3 == null) {
                         System.out.println("Recipe not found.");
                     } else {
-                        System.out.print("enter new servings: ");
+                        System.out.print("Enter new servings: ");
+                        while (!scan.hasNextInt()) {
+                            System.out.print("Invalid input. Enter a whole number: ");
+                            scan.nextLine();
+                        }
                         int ns = scan.nextInt();
                         scan.nextLine();
                         r3.scale(ns);
@@ -141,6 +163,11 @@ public class Driver
                     System.out.println("3) Dessert");
                     System.out.print("Choose: ");
                     
+                    while(!scan.hasNextInt()) {
+                        System.out.print("Invalid input. Enter a number: ");
+                        scan.nextLine();
+                    }
+                    
                     int type = scan.nextInt();
                     scan.nextLine();
 
@@ -148,41 +175,71 @@ public class Driver
                     String newTitle = scan.nextLine();
                     
                     System.out.print("Enter servings: ");
+                    while (!scan.hasNextInt()) {
+                        System.out.print("Invalid input. Enter a whole number: ");
+                        scan.nextLine();
+                    }
+                    
                     int newServings = scan.nextInt();
                     scan.nextLine();
                     
                     Recipe newRecipe;
                     
-                if (type == 1) {
-                    System.out.print("Contains protein? (true/false): ");
-                    boolean protein = scan.nextBoolean();
-                    scan.nextLine();
-                    newRecipe = new MainDishRecipe(newTitle, newServings, protein);
-                
-                } else if (type == 2) {
-                    System.out.print("Contains alcohol? (true/false): ");
-                    boolean alcohol = scan.nextBoolean();
-                    scan.nextLine();
-                    newRecipe = new DrinkRecipe(newTitle, newServings, alcohol);
-                
-                } else if (type == 3) {
-                    System.out.print("Has sugar? (true/false): ");
-                    boolean sugar = scan.nextBoolean();
-                    scan.nextLine();
-                    newRecipe = new DessertRecipe(newTitle, newServings, sugar);
-                
-                } else {
-                    System.out.println("Invalid type. Defaulting to Main Dish.");
-                    newRecipe = new MainDishRecipe(newTitle, newServings, false);
-                }
+                    if (type == 1) {
+                        System.out.print("Contains protein? (true/false): ");
+                        while (!scan.hasNextBoolean()) {
+                            System.out.print("Invalid input. Enter true/false: ");
+                            scan.nextLine();
+                        }
+                        boolean protein = scan.nextBoolean();
+                        scan.nextLine();
+                        newRecipe = new MainDishRecipe(newTitle, newServings, protein);
+                    
+                    } else if (type == 2) {
+                        System.out.print("Contains alcohol? (true/false): ");
+                        while (!scan.hasNextBoolean()) {
+                            System.out.print("Invalid input. Enter true/false: ");
+                            scan.nextLine();
+                        }
+                        boolean alcohol = scan.nextBoolean();
+                        scan.nextLine();
+                        newRecipe = new DrinkRecipe(newTitle, newServings, alcohol);
+                    
+                    } else if (type == 3) {
+                        System.out.print("Has sugar? (true/false): ");
+                        while (!scan.hasNextBoolean()) {
+                            System.out.print("Invalid input. Enter true/false: ");
+                            scan.nextLine();
+                        }
+                        boolean sugar = scan.nextBoolean();
+                        scan.nextLine();
+                        newRecipe = new DessertRecipe(newTitle, newServings, sugar);
+                    
+                    } else {
+                        System.out.println("Invalid type. Defaulting to Main Dish.");
+                        newRecipe = new MainDishRecipe(newTitle, newServings, false);
+                    }
                     
                     while (true) {
                         System.out.print("Enter rating 1-5 (or 0 to stop): ");
+                        
+                        while (!scan.hasNextDouble()) {
+                            System.out.print("Invalid input. Enter a number: ");
+                            scan.nextLine();
+                        }
+                        
                         double rt = scan.nextDouble();
                         scan.nextLine();
                         if (rt == 0) break;
+                        
+                        if (rt < 1 || rt > 5) {
+                            System.out.println("Rating must be 1-5.");
+                            continue;
+                        }
+                        
                         newRecipe.addRating(rt);
                     }
+                    
                     
                     while (true) {
                         System.out.print("Add ingredient? (y/n): ");
@@ -193,18 +250,29 @@ public class Driver
                         String ingName = scan.nextLine();
                         
                         System.out.print("Quantity: ");
+                        while (!scan.hasNextDouble()) {
+                            System.out.print("Invalid input. Enter a number: ");
+                            scan.nextLine();
+                        }
                         double qty = scan.nextDouble();
                         scan.nextLine();
                         
                         System.out.print("Unit (ML, LITER, CUP, GRAM): ");
                         String unitStr = scan.nextLine().trim().toUpperCase();
                         
-                        Unit unit;
-                        try {
-                            unit = Unit.valueOf(unitStr);
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("Invalid unit, defaulting to CUP");
-                            unit = Unit.CUP;
+                        Unit unit = null;
+                        //Removed try and catch for easier readability
+                        while (unit == null) { 
+                            for (Unit u : Unit.values()) {
+                                if (u.name().equals(unitStr)) {
+                                    unit = u;
+                                    break;
+                                }
+                            }
+                            if (unit == null) {
+                                System.out.print("Invalid unit. Enter (ML, LITER, CUP, GRAM): ");
+                                unitStr = scan.nextLine().trim().toUpperCase();
+                            }
                         }
                         
                         Ingredient ing = new Ingredient(ingName, qty, unit);
@@ -219,7 +287,19 @@ public class Driver
                             System.out.print("Tag (EASY, QUICK, HEALTHY, SPICY, HALAL): ");
                             String tagName = scan.nextLine().trim().toUpperCase();
                             
-                            Tag tag = Tag.valueOf(tagName);
+                            Tag tag = null;
+                            while (tag == null) {
+                                for (Tag t : Tag.values()) {
+                                    if (t.name().equals(tagName)) {
+                                        tag = t;
+                                        break;
+                                    }
+                                }
+                                if (tag == null) {
+                                        System.out.print("Invalid tag. Enter (EASY, QUICK, HEALTHY, SPICY, HALAL): ");
+                                        tagName = scan.nextLine().trim().toUpperCase();
+                                }
+                            }
                             newRecipe.addTag(tag);
                     }
                     
