@@ -17,27 +17,59 @@ public class RecipeBookTest
 {
     private RecipeBook book;
     
-    public RecipeBookTest(){
-        
-    }
-
+    
     @BeforeEach
     public void setUp(){
         book = new RecipeBook("RecipeBookOfGood", "John", "Gilbert", "Dec 8th 2025");
-        book.title = "The Book";
-        book = new RecipeBook("The Book", "John", "Gilbert", "Dec 8th 2025");
     }
     
-    @AfterEach
-    public void tearDown(){
-        book = null;
-    }
     
+     // Verify that adding a recipe increases the list size
     @Test
-    public void testSearchByTitle(){
+     public void testAddRecipe() {
         Recipe r = new Recipe("Pancakes", 2);
         book.addRecipe(r);
 
-        assertDoesNotThrow(() -> book.searchByTitle("Pancakes"));
+        assertEquals(1, book.getRecipes().size());
+    }
+    
+     // Ensure findByTitle works and ignores case
+    @Test
+     public void testFindByTitleFoundIgnoreCase() {
+        Recipe r = new Recipe("Pancakes", 2);
+        book.addRecipe(r);
+
+        Recipe found = book.findByTitle("pAnCaKeS");
+        assertNotNull(found);
+        assertEquals("Pancakes", found.getTitle());
+    }
+    
+     // Searching for a missing title should return null
+    @Test
+    public void testFindByTitleNotFoundReturnsNull() {
+        book.addRecipe(new Recipe("Pancakes", 2));
+
+        assertNull(book.findByTitle("Waffles"));
+    }
+    
+     // If no recipes exist, top-rated should be null
+    @Test
+    public void testGetTopRatedEmptyReturnsNull() {
+        assertNull(book.getTopRated());
+    }
+    
+    // Verify that the recipe with the highest average rating is returned
+    @Test
+    public void testGetTopRatedReturnsHighest() {
+        Recipe low = new Recipe("Toast", 1);
+        low.addRating(2);
+
+        Recipe high = new Recipe("Steak", 2);
+        high.addRating(5);
+
+        book.addRecipe(low);
+        book.addRecipe(high);
+
+        assertEquals("Steak", book.getTopRated().getTitle());
     }
 }
